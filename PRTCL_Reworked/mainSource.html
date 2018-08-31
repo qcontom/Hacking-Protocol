@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<title>Hacking Protocol</title>
+<meta charset=utf-8 />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<style type="text/css">
+
+	html, body {
+    	position:fixed;
+    	top:0;
+    	bottom:0;
+    	left:0;
+    	right:0;
+		background-color:#3e3e5b;
+		height:800px;
+		user-select: none;
+	}
+
+	#main {
+		position: absolute;
+		top:0px;
+		left:0%;
+		width:100%;
+		height:95%;
+		background: #3e3e5b;
+		border:solid 1px #5d5d89;
+	}
+
+	#terminal {
+		position: absolute;
+		top:10%;
+		left:10%;
+		width:79%;
+		height:69%;
+		background: #262626;
+		border-radius: 5px;
+		color: #ff9900;
+		padding-left:1%;
+		padding-top:1%;
+		overflow:auto;
+	}
+
+	#textInput {
+		position: absolute;
+		top:82%;
+		left:10%;
+		width:80%;
+		height:5.5%;
+		background: #595959;
+		border-radius: 5px;
+	}
+
+	#enterText {
+		position: absolute;
+		top:5%;
+		right:.25%;
+		width:10%;
+		height:90%;
+		background: #669999;
+		border-radius: 5px;
+		text-align:center;
+		font-size:250%;
+	}
+
+	#enterText:hover {
+		background: #ffcc00;
+		transition: 0.4s;
+		color: #0099ff;
+	}
+
+	#myTextarea {
+		position: absolute;
+		top:2%;
+		left:1%;
+		width:80%;
+		height:85%;
+		background: #404040;
+		color: #ff9900;
+		font-size:125%;
+		outline: none;
+		border: solid 1px #595959;
+		border-radius:3px;
+		padding-left:1%;
+	}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+//This is just the thing that is shown before the entered code
+first = "main>>>   "
+
+//Takes the text input and displays in terminal window
+function update() {
+	current = document.getElementById("terminal").innerHTML
+	textInBox = document.getElementById("myTextarea").value
+	document.getElementById("terminal").innerHTML = current + first + textInBox + "<br/>";
+	document.getElementById("myTextarea").value = "";
+}
+
+username = "jbrown"
+input = ""
+password = "iluvfoxes"
+passwordoutput = 0
+level1 = 0
+
+
+//function help1() {
+//	echo "help: Displays this help "
+//	echo "ls: lists files "
+//	echo "cat: use with conjunction with a filename to display the contents of a file "
+//	echo "motd: Displays main objective "
+//	echo "login: login to your computer "
+//}
+
+
+//function motd1() {
+//	motd1 = "Welcome to the Complex. Please login with your username and password: ";
+//	current = document.getElementById("terminal").innerHTML
+//	document.getElementById("terminal").innerHTML = current + motd1 + "<br/>";
+	
+//}
+
+
+//function ls1() {
+//	echo "files: "
+//	echo "password.fyle"
+//}
+
+
+//function cat() {
+//	echo "use with conjunction with a filename to display the contents of a file "
+//	echo "USAGE: cat <filename> "
+//}
+
+
+//function catPassword() {
+//	echo "$(tput setaf 1)<START OF FILE> $(tput setaf 0)"
+//	echo "username: jbrown"
+//	echo "password: iluvfoxes"
+//	echo "$(tput setaf 1)<END OF FILE> $(tput setaf 0)"
+//}
+
+
+//function checkPassword() {
+// Add function to save entered text to input var	
+//	if (input == password)
+//		passwordoutput = 1;
+//	else if (input == "root")
+//		passwordoutput = 1;
+//	else
+//		passwordoutput = 0;
+	//echo "Incorrect password!"
+//}
+
+
+//function login1() {
+//	echo "   username: "
+//	read jbrownusername
+// Add function to save entered text to input var 
+//	if (input == username) 
+//		checkPassword()
+//	else if (input == "root")
+//		checkPassword()
+//	else
+		//echo "Invalid username!"
+//}
+
+
+//function unknownInput() {
+	//echo "Unknown input. Please try again."
+//}
+
+
+//function level1() {
+//	while (level1 == 0)
+//		motd()
+		//read input from user
+		//input = document.getElementById("myTextarea").value
+//		switch (input) {
+//			case "help":
+//				help1()
+//				break;
+//			case "ls":
+//				ls1()
+//				break;
+//			case "cat":
+//				cat()
+//				break;
+//			case "cat password.fyle":
+//				catPassword()
+//				break;
+//			case "motd":
+//				motd1()
+//				break;
+//			case "login":
+//				login1()
+//				break;
+//			default:
+//				unknownInput()
+//		}
+//}
+
+//motd1()
+
+//This is only to sense the enter key being pressed
+$(document).keypress(function (e) {
+    if (e.which == 13) {
+        update();
+//        motd1();
+    }
+});
+
+//level1()
+
+
+
+</script>
+<body>
+	<div id="main">
+
+		<div id="terminal"></div>
+
+		<div id="textInput">
+			<input id="myTextarea" type="text"></input>
+			<div id="enterText" onclick="update()">^</div>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

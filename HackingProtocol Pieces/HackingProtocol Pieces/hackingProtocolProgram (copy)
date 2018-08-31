@@ -1,0 +1,222 @@
+#!/bin/bash
+clear
+let n=1
+let y=1
+let z=1
+function jbrownpassword
+{
+	echo "password: ";
+}
+echo " "
+echo "Welcome to the Complex. Please login with your username and password. "
+while [ "$n" -eq 1 ]
+do
+echo "$(tput setaf 2) Complex: $(tput setaf 0)" 
+read maininput
+case $maininput in
+	"help")
+	echo "help: Displays this help "
+	echo "ls: lists files "
+	echo "cat: use with conjunction with a filename to display the contents of a file "
+	echo "motd: Displays main objective "
+	echo "login: login to your computer "
+	;;
+	"motd")
+	echo "Welcome to the Complex. Please login with your username and password. "
+	;;
+	"ls")
+	echo "files: "
+	echo "password.fyle"
+	;;
+	"cat") 
+	echo "use with conjunction with a filename to display the contents of a file "
+	echo "USAGE: cat <filename> " 
+	;;
+	"cat password.fyle") 
+	echo "$(tput setaf 1)<START OF FILE> $(tput setaf 0)"
+	echo "username: jbrown"
+	echo "password: iluvfoxes"
+	echo "$(tput setaf 1)<END OF FILE> $(tput setaf 0)"
+	;;
+	"login")
+	echo "   username: "
+	read jbrownusername
+	case $jbrownusername in
+		"jbrown")
+		echo "   password: "
+		read jbrownpassword
+		case $jbrownpassword in
+			"iluvfoxes")
+			break 
+			;;
+			*)
+			echo "incorrect password."
+			;;
+			esac
+		;;
+		"admin")
+		echo "password: "
+		read jbrownpassword
+		case $jbrownpassword in
+			"root")
+			break 
+			;;
+			*)
+			echo "incorrect password."
+			;;
+			esac
+		;;
+		*)
+		echo "Unknown user"
+		continue
+		;;
+	esac
+	;;
+	*)
+	echo "Unknown command. Type help for list of commands. "
+	;;
+esac
+done
+clear
+	#Starts level 2 -----------------------------------------------------------------------------------------------------------------------------------
+echo "-----------------------------------"
+echo "CONGRADULATIONS. WELCOME TO LEVEL 2"
+echo "-----------------------------------"
+echo "Welcome $jbrownusername!"
+echo "(OBJECTIVE: run a command as an administrator) "
+while [ "$n" -eq 1 ]
+do
+echo "Complex: " 
+read maininput
+case $maininput in
+	"help")
+	echo "help: displays this help "
+	echo "ls: lists files "
+	echo "cat: use with conjunction with a filename to display the contents of a file "
+	echo "motd: displays main objective "
+	echo "sudo: run a command as an administrator "
+	;;
+	"motd")
+	echo "(OBJECTIVE: run a command as an administrator) "
+	;;
+	"cat") 
+	echo "use with conjunction with a filename to display the contents of a file "
+	echo "USAGE: 'cat <filename>' " 
+	;;
+	"ls")
+	echo "files: "
+	echo "objective.fyle"
+	;;
+	"sudo")
+	echo "sudo: run a command as an administrator "
+	echo "USAGE: sudo <command> "
+	echo "EXAMPLE: sudo cat <filename> "
+	;;
+	"cat objective.fyle")
+	echo "This fyle can only be opened by and administrator! "
+	;;
+	"sudo cat objective.fyle")
+	let n=2
+	;;
+	"root")
+	break
+	;;
+	*)
+	echo "unknown command. type help for list of commands "
+	;;
+esac
+done
+#level 3 ----------------------------------------------------------------------------------------------------------------------------------------------
+clear
+let y=1
+let z=1
+let clearancelvl=1
+let used=0
+let fileuse=0
+echo "------------------------------------"
+echo "CONGRADULATIONS. WELCOME TO LEVEL 3 "
+echo "------------------------------------"
+echo " "
+while [ "$y" -eq 1 ]
+do
+echo "Complex: " 
+read maininput
+case $maininput in
+	"help")
+	echo "help: displays this help "
+	echo "ls: lists files "
+	echo "cat: use with conjunction with a filename to display the contents of a file "
+	echo "motd: displays main objective "
+	echo "sudo: run a command as an administrator "
+	;;
+	"motd")
+	echo "(OBJECTIVE: get the right level of clearance to proceed) "
+	;;
+	"cat") 
+	echo "use with conjunction with a filename to display the contents of a file "
+	echo "USAGE: 'cat <filename>' " 
+	;;
+#---------------------------------------------------------------------------------------------------------------ls files------------------------------
+	"ls")
+	if [ "$clearancelvl" -eq 1 ]
+	then
+	echo "files: "
+	echo "favor.fyle"
+		elif [ "$clearancelvl" -eq 2 ]
+		then
+		echo "files: "
+		echo "HIDDEN.fyle"
+		echo "employees.data"
+			elif [ "$clearancelvl" -eq 3 ]
+			then
+			echo " "
+	fi
+	;;
+#---------------------------------------------------------------------------------------------------------------ls files------------------------------
+	"sudo")
+	echo "sudo: run a command as an administrator "
+	echo "USAGE: sudo <command> "
+	echo "EXAMPLE: sudo cat <filename> "
+	;;
+	"cat favor.fyle")
+	echo "This fyle can only be opened by and administrator! "
+	;;
+	"sudo cat favor.fyle")
+	if [ "$fileuse" -eq 0 ]
+	then
+		echo "-------------------------------------------------------"
+		echo "John, i need a favor."
+		echo "	I need you to up my clearance level for today only, "
+		echo "	so I can acsess some of the files I have stored on "
+		echo "	the cloud. Just type in 'clearancelvl @a + 1' ."
+		echo "		Thanks! "
+		echo "-------------------------------------------------------"
+		let fileuse=1
+	else
+	echo "You can only open this file once! "
+	fi
+	;;
+	"lvl")
+	echo "current level: $clearancelvl "
+	;;
+	"clearancelvl @a + 1")
+	if [ "$used" -eq 0 ]
+	then
+	let $clearancelvl="$clearancelvl + 1" 
+	let $used="$used + 1" 
+	echo "Clearance level changed. Type lvl to see your current level. "
+	else
+	echo "You can only use this command once!"
+	fi
+	;;
+	esac
+done
+read response
+
+
+
+
+
+
+
+

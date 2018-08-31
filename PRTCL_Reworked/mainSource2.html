@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<title>Hacking Protocol</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<style type="text/css">
+
+	html, body {
+    	position:fixed;
+    	top:0;
+    	bottom:0;
+    	left:0;
+    	right:0;
+		background-color:#333399;
+		height:800px;
+		user-select: none;
+	}
+
+	#main {
+		position: absolute;
+		top:0px;
+		left:0%;
+		width:100%;
+		height:95%;
+		background: #333399;
+		border:solid 1px #ccccff;
+	}
+
+</style>
+<script>
+
+var username = "jbrown"
+var input = ""
+var password = "iluvfoxes"
+var passwordoutput = 0
+var level1 = 0
+
+function help1() {
+//	echo "help: Displays this help "
+//	echo "ls: lists files "
+//	echo "cat: use with conjunction with a filename to display the contents of a file "
+//	echo "motd: Displays main objective "
+//	echo "login: login to your computer "
+}
+
+function motd1() {
+//	echo "Welcome to the Complex. Please login with your username and password. "
+}
+
+function ls1() {
+//	echo "files: "
+//	echo "password.fyle"
+}
+
+function cat() {
+//	echo "use with conjunction with a filename to display the contents of a file "
+//	echo "USAGE: cat <filename> "
+}
+
+function catPassword() {
+//	echo "$(tput setaf 1)<START OF FILE> $(tput setaf 0)"
+//	echo "username: jbrown"
+//	echo "password: iluvfoxes"
+//	echo "$(tput setaf 1)<END OF FILE> $(tput setaf 0)"
+}
+
+function checkPassword() {
+// Add function to save entered text to input var	
+	if (input == password)
+		passwordoutput = 1;
+	else if (input == "root")
+		passwordoutput = 1;
+	else
+		passwordoutput = 0;
+	//echo "Incorrect password!"
+}
+
+
+function login1() {
+//	echo "   username: "
+//	read jbrownusername
+// Add function to save entered text to input var 
+	if (input == username) 
+		checkPassword()
+	else if (input == "root")
+		checkPassword()
+	else
+		//echo "Invalid username!"
+}
+
+function unknownInput() {
+	//echo "Unknown input. Please try again."
+}
+
+function level1() {
+	while (level1 == 0)
+		motd()
+		//read input from user
+		switch (input) {
+			case "help":
+				help1()
+				break;
+			case "ls":
+				ls1()
+				break;
+			case "cat":
+				cat()
+				break;
+			case "cat password.fyle":
+				catPassword()
+				break;
+			case "motd":
+				motd1()
+				break;
+			case "login":
+				login1()
+				break;
+			default:
+				unknownInput()
+		}
+}
+
+
+
+
+
+
+</script>
+<body>
+	<div id="main">
+
+	</div>
+</body>
+</html>

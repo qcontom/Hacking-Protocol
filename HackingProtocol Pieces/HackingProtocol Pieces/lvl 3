@@ -1,0 +1,191 @@
+#!/bin/bash
+let y=1
+let z=1
+let clearancelvl=2
+let used=0
+let fileuse=0
+echo "------------------------------------"
+echo "CONGRADULATIONS. WELCOME TO LEVEL 3 "
+echo "------------------------------------"
+echo " "
+while [ $y -eq 1 ]
+do
+echo "Complex: " 
+read maininput
+case $maininput in
+	"help")
+	echo "help: displays this help "
+	echo "ls: lists files "
+	echo "cat: use with conjunction with a filename to display the contents of a file "
+	echo "motd: displays main objective "
+	echo "sudo: run a command as an administrator "
+	;;
+	"motd")
+	echo "(OBJECTIVE: get the right level of clearance to proceed) "
+	;;
+	"cat") 
+	echo "use with conjunction with a filename to display the contents of a file "
+	echo "USAGE: cat <filename> " 
+	;;
+#---------------------------------------------------------------------------------------------------------------ls files------------------------------
+	"ls")
+	if [ $clearancelvl -eq 1 ]
+	then
+	echo "files: "
+	echo "favor.fyle"
+		elif [ "$clearancelvl" -eq 2 ]
+		then
+		echo "files: "
+		echo "HIDDEN.fyle"
+		echo "employees.data"
+			elif [ "$clearancelvl" -eq 3 ]
+			then
+			echo " "
+	;;
+#---------------------------------------------------------------------------------------------------------------ls files------------------------------
+	"sudo")
+	echo "sudo: run a command as an administrator "
+	echo "USAGE: sudo <command> "
+	echo "EXAMPLE: sudo cat <filename> "
+	;;
+	"cat favor.fyle")
+	echo "This fyle can only be opened by and administrator! "
+	;;
+	"sudo cat favor.fyle")
+	if [ "$fileuse" -eq 0 ]
+	then
+		echo "-------------------------------------------------------"
+		echo "John, i need a favor."
+		echo "	I need you to up my clearance level for today only, "
+		echo "	so I can acsess some of the files I have stored on "
+		echo "	the cloud. Just type in 'clearancelvl @a + 1' ."
+		echo "		Thanks! "
+		echo "-------------------------------------------------------"
+		let fileuse=1
+	else
+	echo "You can only open this file once! "
+	;;
+	"lvl")
+	echo "current level: $clearancelvl "
+	;;
+	"clearancelvl @a + 1")
+	if [ "$used" -eq 0 ]
+	then
+		let $clearancelvl=2
+		let used=1
+		echo "	Clearance level upped to level 2 "
+	else
+		echo "You cannot use that command twice! "
+	;;
+	"cat HIDDEN.fyle")
+	echo "This fyle can only be opened by and administrator! "
+	;;
+	"sudo cat HIDDEN.fyle")
+	if [ "$clearancelvl" -eq 2 ]
+	then
+	echo "-------------------------------------------------------"
+	echo "HIDDEN: Upping the clearance level for a employee: "
+	echo "Type in 'employeeClearance', then their name and id number, "
+	echo "and add in the level of clearance they need. Thats it! "
+	echo "-------------------------------------------------------"
+	else
+	echo "Your clearance level isnt high enough to view this file! "
+	;;
+	"cat employees.data")
+	if [ "$clearancelvl" -eq 2 ]
+	then
+	echo "-------------------------------------------------------"
+	echo "John Brown: user: jbrown  id: 255 "
+	echo "Mr. Legend: user: ******  id: *******"
+	echo "Joe Janitor: user: jjanitor  id: 279"
+	else
+	echo "Your clearance level isnt high enough to view this file! "
+	;;
+	"employeeClearance")
+	if [ "$clearancelvl" -ge 2 ]
+	then
+		while [ $z -eq 1 ]
+		do
+		echo "Clearance: "
+		read clearanceinput
+		case $clearanceinput in
+			"help")
+			echo "help: displays this help "
+			echo "setlevel: set clearance level of an employee "
+			echo "exit: return to main "
+			;;
+			"exit")
+			echo "			exiting... "
+			break
+			;;
+			"setlevel")
+			echo "user"
+			read clearanceuser
+			case $clearanceuser in	
+				"jbrown")
+				echo "id: "
+				read clearanceid
+				case $clearanceid in
+					"255")
+					echo "level: "
+					read clearancelevel
+					case $clearancelevel in
+						"3")
+						echo "Clearance Level of jbrown set to 3! "
+						let clearancelvl=3
+						break
+						;;
+						*)
+						echo "invalid level! "
+						;;
+					esac
+					;;
+					*)
+					echo "invalid id! "
+					;;
+				esac
+				;;
+				"jjanitor")
+				echo "id: "
+				read clearanceid
+				case $clearanceid in
+					"279")
+					echo "level: "
+					read clearancelevel
+					case $clearancelevel in
+						"2")
+						echo "Clearance level of jjanitor set to 2! "
+						;;
+						"3")
+						echo "Clearance level of jjanitor set to 3! "
+						;;
+						*)
+						echo "invalid level! "
+						;;
+					esac
+					*)
+					echo "invalid id! "
+					;;
+				esac
+				;;
+				*)
+				echo "invalid user! "
+				;;
+			esac
+			;;
+		esac
+		done
+	else
+	echo "Clearance level not high enough! "
+	fi		
+	;;	
+		esac
+		done
+	else
+	echo "Not high enough clearance level! "
+	fi
+	;;
+	*)	
+	echo "Unknown command. Type help for a list of commands "
+	;;
+read response

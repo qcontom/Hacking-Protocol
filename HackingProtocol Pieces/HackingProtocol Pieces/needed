@@ -1,0 +1,59 @@
+#!/bin/bash
+let z=1
+let clearancelvl=2
+read response
+case response in
+"setlevel")
+echo "user"
+read clearanceuser
+case $clearanceuser in	
+	"jbrown")
+	echo "id: "
+	read clearanceid
+	case $clearanceid in
+		"255")
+		echo "level: "
+		read clearancelevel
+		case $clearancelevel in
+			"3")
+			echo "Clearance Level of jbrown set to 3! "
+			break
+			;;
+			*)
+			echo "invalid level! "
+			;;
+			esac
+		;;
+		*)
+		echo "invalid id! "
+		;;
+		esac
+	;;
+	"jjanitor")
+	echo "id: "
+	read clearanceid
+	case $clearanceid in
+		"279")
+		echo "level: "
+		read clearancelevel
+		case $clearancelevel in
+			"2")
+			echo "Clearance level of jjanitor set to 2! "
+			;;
+			"3")
+			echo "Clearance level of jjanitor set to 3! "
+			;;
+			*)
+			echo "invalid level! "
+			;;
+			esac
+		*)
+		echo "invalid id! "
+		;;
+		esac
+	;;
+	*)
+	echo "invalid user! "
+	;;
+esac
+
