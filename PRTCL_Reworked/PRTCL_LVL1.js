@@ -5,11 +5,14 @@
 first = "CPLX >>> "
 level = 1;
 inputPhase = 0;
-
+var username = ""
+var password = ""
 
 var audio = new Audio('knob.mp3');
 var audio2 = new Audio('definite.mp3');
 var audio3 = new Audio('beep-07.mp3');
+
+generateUser();
 
 //Takes the text input and displays in terminal window
 function update() {
@@ -28,6 +31,7 @@ function update() {
 		document.getElementById("terminal").innerHTML = current + first + textInBox + "<br/><br/>";
 		document.getElementById("myTextarea").value = "";
 		audio.play();
+		scrollToBottom();
 		checkUsername();
 	}
 //Checks your password
@@ -36,7 +40,7 @@ function update() {
 		textInBox = document.getElementById("myTextarea").value
 		document.getElementById("terminal").innerHTML = current + first + textInBox + "<br/><br/>";
 		document.getElementById("myTextarea").value = "";
-		//scrollSmoothToBottom();
+		scrollToBottom();
 		checkPassword();
 	}
 }
@@ -99,7 +103,7 @@ function cat() {
 
 function catPassword() {
 	current = document.getElementById("terminal").innerHTML;
-	document.getElementById("terminal").innerHTML = current + "---START OF FILE---" + "<br/>" + "username: jbrown" + "<br/>" + "password: cmf393" + "<br/>" + "---END OF FILE---" + "<br/><br/>"
+	document.getElementById("terminal").innerHTML = current + "---START OF FILE---" + "<br/>" + "username: " + username + "<br/>" + "password: " + password + "<br/>" + "---END OF FILE---" + "<br/><br/>"
 }
 
 function login() {
@@ -119,7 +123,7 @@ function checkUsername() {
 	scrollToBottom();
 	if (level == 1)
 		switch (textInBox) {
-			case "jbrown":
+			case username:
 				inputPhase = 2;
 				scrollToBottom();
 				password();
@@ -132,6 +136,7 @@ function checkUsername() {
 				inputPhase = 0;
 				unknownInput();
 		}
+		scrollToBottom();
 }
 
 //Checks the entered password
@@ -139,7 +144,7 @@ function checkPassword() {
 	scrollToBottom();
 	if (level == 1)
 		switch (textInBox) {
-			case "cmf393":
+			case password:
 				endLevel();
 				break;
 			case "root":
@@ -149,6 +154,7 @@ function checkPassword() {
 				inputPhase = 0;
 				unknownInput();
 		}
+		scrollToBottom();
 }
 
 //Ends the level with a neato sound
@@ -185,5 +191,35 @@ $(document).keypress(function (e) {
     if (e.which == 13) {
         update();
     }
+
+
+
 });
+}
+function generateUser() {
+
+var x = Math.floor(((Math.random() * 10) + 1) % 5);
+
+switch(x) {
+	case 0:
+	username = "aiden"
+	password = "scarecrow4"
+	break;
+	case 1:
+	username = "lucas"
+	password = "139army"
+	break;
+	case 2:
+	username = "caden"
+	password = "marbles"
+	break;
+	case 3:
+	username = "grayson"
+	password = "thecakeisalie"
+	break;
+	case 4:
+	username = "mason"
+	password = "pollutionsucks"
+	break;
+}
 }
