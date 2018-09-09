@@ -121,6 +121,7 @@ function update() {
 		document.getElementById("myTextarea").value = "";
 		//scrollSmoothToBottom();
 		audio.play();
+		scrollToBottom()
 		checkCommand();
 	}
 //Checks your username
@@ -131,6 +132,7 @@ function update() {
 		document.getElementById("myTextarea").value = "";
 		//scrollSmoothToBottom();
 		audio.play();
+		scrollToBottom()
 		checkUsername();
 	}
 //Checks your password
@@ -256,6 +258,15 @@ function endLevel() {
 	audio2.play();
 
 }
+
+const console = document.getElementById('terminal');
+
+function scrollToBottom() {
+	console.scrollTop = console.scrollHeight;
+}
+
+
+
 
 
 
